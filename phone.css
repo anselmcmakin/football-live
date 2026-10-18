@@ -1,0 +1,42 @@
+/* PWA additions: portrait phone layout (body.phone); landscape mirrors the TV layout via zoom (body.land). */
+html{-webkit-text-size-adjust:100%;touch-action:manipulation}
+body.pwa{-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+.pwa #hint,.pwa #menu,.pwa #gsel{display:none!important}
+#controls{display:flex;gap:10px;flex-wrap:wrap}
+.seg{display:inline-flex;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:12px;padding:3px}
+.seg button{font:600 15px Inter,system-ui,sans-serif;color:#fff;background:none;border:0;padding:8px 12px;border-radius:9px}
+.seg button.on{background:var(--acc);color:#000}
+.favs{display:flex;gap:8px;margin-top:10px}.favs button{flex:1;font:700 15px Inter,system-ui,sans-serif;color:#fff;background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:10px;padding:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gr,#lgchip,#finish{cursor:pointer}
+/* landscape (TV layout scaled) */
+body.land #controls{position:absolute;left:520px;top:104px;z-index:4}body.land #sub{width:480px}body.land #sub #detail{display:none}
+body.land #card .favs{display:none}
+/* portrait phone */
+body.phone,html:has(body.phone){width:100%;height:auto;min-height:100%;overflow-x:hidden;overflow-y:auto}
+body.phone{padding:0 env(safe-area-inset-right) calc(env(safe-area-inset-bottom) + 10px) env(safe-area-inset-left);background:#0b0d13}
+.phone #ticker{position:sticky;top:0;z-index:6;width:100%;height:calc(54px + env(safe-area-inset-top));padding-top:env(safe-area-inset-top)}
+.phone #tkfix{gap:8px;padding:0 10px}.phone .lg{min-width:64px;height:30px;font-size:12px;letter-spacing:1px;border-radius:8px;padding:0 8px}
+.phone #tkcount b{font-size:14px}.phone #tkcount span{display:none}.phone #tkstrip{height:54px}
+.phone .ti{font-size:15px;gap:6px;margin-right:10px;padding:4px 10px;border-radius:10px}.phone .ti img{height:20px;width:20px}.phone .ti .st{font-size:12px}.phone .rk{font-size:11px}.phone .rz{font-size:10px;padding:1px 4px}.phone .pd{width:7px;height:7px}
+.phone #controls{padding:8px 10px 2px;gap:6px;flex-wrap:nowrap}.phone .seg{padding:2px}.phone .seg button{font-size:13px;padding:6px 7px}
+.phone #sub{position:static;width:auto;height:auto;padding:8px 12px 4px;font-size:15px;gap:8px;flex-wrap:wrap;white-space:normal}
+.phone .mode{font-size:11px;padding:4px 8px}.phone #detail{font-size:12px;flex-basis:100%}
+.phone #main{position:relative;left:auto;top:auto;width:auto;height:auto;padding:0 12px}
+.phone #bug{position:relative;width:auto;height:auto;gap:6px}
+.phone .bt{flex-direction:column!important;gap:2px;padding:10px 4px;text-align:center!important;border-radius:16px}.phone .bt img{height:44px;width:44px}
+.phone .bt .nm{font-size:16px}.phone .bt .nm .rk{font-size:12px}.phone .bt .rc{font-size:11px;margin-top:1px}.phone .bt .to{justify-content:center!important;margin-top:3px}.phone .bt .to i{width:14px;height:4px}
+.phone .bt .pts{margin:0!important;font-size:38px;line-height:1}.phone .bt .pos{position:absolute;top:8px;right:8px;width:26px;height:16px}.phone .bt .bar{width:100%!important;height:5px;bottom:auto}
+.phone .bc{width:120px;border-radius:16px;padding:6px}.phone .bc .q{font-size:12px}.phone .bc .clk{font-size:28px}.phone .bc .dd{font-size:11px;padding:3px 6px;white-space:normal}.phone .bc .fin{font-size:24px}
+.phone #fieldwrap{position:relative;left:auto;top:auto;width:100%;height:auto;margin-top:8px}.phone #field{position:relative;display:block;border-radius:10px}
+.phone #pre,.phone #finish{position:relative;left:auto;top:auto;transform:none;width:auto;margin:8px 0;padding:14px 16px;border-radius:18px}
+.phone #pre .m img{height:56px;width:56px}.phone #pre .t{font-size:20px}.phone #pre .v{font-size:13px}
+.phone #finish .fs img{height:54px;width:54px}.phone #finish .fs .p{font-size:42px}.phone #finish .w{font-size:20px}.phone #finish .ld{font-size:13px}.phone #finish .hint{font-size:12px}
+.phone #lastplay{position:relative;top:auto;width:auto;height:auto;margin-top:8px;padding:12px 14px;border-radius:18px}.phone #lpk{font-size:11px}.phone #lpk .ty{font-size:10px}.phone #lpt{font-size:15px;-webkit-line-clamp:4}
+.phone #drivebar{position:relative;top:auto;left:auto;width:auto;height:auto;flex-wrap:wrap;gap:4px 10px;font-size:12px;padding:8px 2px;white-space:normal}.phone #drivebar .lgo{height:18px;width:18px}
+.phone #side{position:relative;right:auto;top:auto;width:auto;height:auto;padding:0 12px}
+.phone #card,.phone #games{position:relative;left:auto;top:auto;width:auto;height:auto;margin-top:8px;padding:12px;border-radius:18px}
+.phone #card .k,.phone .sh{font-size:12px}.phone .wp .wl{font-size:13px}.phone .ct{font-size:15px}.phone .ct td:nth-child(2){font-size:11px}.phone .ct th img{height:26px;width:26px}
+.phone .ldr div{font-size:12px}.phone .ldr div span{max-width:42%}.phone .ldr div i{font-size:10px}
+.phone #glist{height:auto}.phone #gin{position:static}.phone .gr{height:58px;padding:0 8px}.phone .gr .ln{font-size:15px}.phone .gr .ln img{height:20px;width:20px}.phone .gr .gs{font-size:12px;width:70px}.phone .gsec{font-size:11px}
+.phone #toast{position:fixed;left:50%;top:calc(70px + env(safe-area-inset-top));font-size:15px;padding:10px 16px}
+.phone #foot{position:static;padding:12px 16px 4px;text-align:center;font-size:12px}

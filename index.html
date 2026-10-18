@@ -6,9 +6,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Football Live">
 <link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><link rel="icon" href="icons/icon-192.png">
-<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="phone.css"></head><body class="pwa">
+<link rel="stylesheet" href="style.css?v=2"><link rel="stylesheet" href="phone.css?v=2"></head><body class="pwa">
+<script>(function(){var mm=function(q){return matchMedia(q).matches},p=mm("(orientation:portrait)"),l=!p&&mm("(max-height:599px)");var c=(p||l?"phone":"land")+(l?" lphone":"");document.body.className="pwa "+c;document.documentElement.className=c})();</script>
 <div id="ticker"><div id="tkfix"><div id="lgchip" class="lg">COLLEGE</div><div id="tkcount"><b id="nlive">—</b><span id="nrest"></span></div></div>
  <div id="tkwrap"><div id="tkstrip"></div></div></div>
+<div id="lcol">
 <div id="controls">
  <div class="seg" id="segLg"><button data-l="cfb">College</button><button data-l="nfl">NFL</button></div>
  <div class="seg" id="segMode"><button data-m="live">Live</button><button data-m="test">Test game</button></div>
@@ -18,18 +20,20 @@
 <div id="main">
  <div id="bug"></div>
  <div id="fieldwrap"><canvas id="field" width="1360" height="520"></canvas>
+  <div id="zc" class="hidden"><button id="zfollow" class="on">Follow ball</button><button id="zreset">1x</button></div>
   <div id="pre" class="glass hidden"></div><div id="finish" class="glass hidden"></div></div>
  <div id="lastplay" class="glass"><div id="lpk">LAST PLAY</div><div id="lpt">—</div></div>
  <div id="drivebar"></div>
 </div>
+</div>
 <div id="side">
  <div id="card" class="glass"></div>
  <div id="games" class="glass"><div class="sh"><span id="ghead">Games</span><span id="gsel">Tap a game</span></div><div id="glist"></div></div>
+ <footer id="foot">Unofficial fan project. Not affiliated with ESPN, the NCAA, or any school. Not affiliated with the NFL or its teams. Scores and play-by-play from ESPN's public feeds; team logos load from ESPN.</footer>
 </div>
 <div id="menu" class="glass hidden"></div><div id="toast" class="hidden"></div>
-<footer id="foot">Unofficial fan project. Not affiliated with ESPN, the NCAA, or any school. Not affiliated with the NFL or its teams. Scores and play-by-play from ESPN's public feeds; team logos load from ESPN.</footer>
 <script>window.PWA=true;</script>
-<script src="testgame.js"></script><script src="app.js"></script>
+<script src="testgame.js?v=2"></script><script src="app.js?v=2"></script>
 <script>
 (function(){var $=function(s){return document.querySelectorAll(s)};
  function sync(){var S=FL.state;$('#segLg button').forEach(function(b){b.classList.toggle('on',b.dataset.l===S.league)});$('#segMode button').forEach(function(b){b.classList.toggle('on',b.dataset.m===S.mode)});

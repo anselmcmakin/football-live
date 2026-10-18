@@ -40,3 +40,59 @@ body.phone{padding:0 env(safe-area-inset-right) calc(env(safe-area-inset-bottom)
 .phone #glist{height:auto}.phone #gin{position:static}.phone .gr{height:58px;padding:0 8px}.phone .gr .ln{font-size:15px}.phone .gr .ln img{height:20px;width:20px}.phone .gr .gs{font-size:12px;width:70px}.phone .gsec{font-size:11px}
 .phone #toast{position:fixed;left:50%;top:calc(70px + env(safe-area-inset-top));font-size:15px;padding:10px 16px}
 .phone #foot{position:static;padding:12px 16px 4px;text-align:center;font-size:12px}
+/* v2: phones must never see the TV's 1920px html/body width, even before JS runs (iOS keeps the layout viewport as wide as the widest content it ever saw) */
+@media (orientation:portrait),(max-height:599px){html,body{width:100%!important;max-width:100%;height:auto;overflow-x:hidden}body{zoom:1}}
+/* ===== v2: no horizontal overflow, centered cards, phone landscape, field zoom ===== */
+html.phone,html.phone body{width:100%;max-width:100%;overflow-x:hidden;overflow-x:clip}
+body.phone{padding-left:0;padding-right:0}
+.phone #lcol,.phone #main,.phone #side,.phone #bug,.phone #fieldwrap,.phone #card,.phone #games,.phone #glist,.phone #gin,.phone #controls,.phone #sub,.phone #ticker{max-width:100%;min-width:0}
+.phone #main,.phone #side{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+.phone #controls,.phone #sub{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+.phone #controls{justify-content:center}
+.phone .bt,.phone .bt>div,.phone .gr .tt,.phone .gr .ln .n,.phone #sub span{min-width:0}
+.phone .bt .nm{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.phone #field{margin:0 auto;max-width:100%;touch-action:pan-y}.phone #field.zoomed{touch-action:none}
+.phone #drivebar{padding:8px 4px}
+.phone .bc .clk[style]{font-size:18px!important}
+.phone #ticker{display:flex;max-width:100%;overflow:hidden}
+.phone #tkfix{flex:none;background:#101218;position:relative;z-index:3}
+.phone #tkwrap{min-width:0}
+.phone #foot{padding:12px 4px 4px}
+#zc{position:absolute;right:8px;top:8px;display:flex;gap:6px;z-index:4}
+#zc button{font:700 12px Inter,system-ui,sans-serif;color:#fff;background:rgba(10,12,18,.82);border:1px solid rgba(255,255,255,.3);border-radius:9px;padding:6px 9px}
+#zc button.on{background:var(--acc);color:#000;border-color:var(--acc)}
+#zc.hidden{display:none}
+/* TV-zoom layout on big landscape screens: footer now lives inside #side */
+body.land #foot{left:-1366px;bottom:-28px;width:1340px}
+/* ----- phone landscape (body.phone.lphone): ticker on top, field column left ~62%, scrollable games/matchup right ----- */
+html.lphone{height:100%!important;min-height:0!important;overflow:hidden!important}html.lphone body.lphone{overflow:hidden!important;min-height:0!important}
+body.lphone{display:grid;grid-template-columns:minmax(0,62fr) minmax(0,38fr);grid-template-rows:auto minmax(0,1fr);height:100vh!important;height:100dvh!important;padding:0 env(safe-area-inset-right) 0 env(safe-area-inset-left)}
+.lphone #ticker{grid-column:1/-1;grid-row:1;position:relative;height:40px;padding-top:0}
+.lphone #tkstrip{height:40px}.lphone .lg{height:26px;min-width:58px;font-size:11px}.lphone .ti{font-size:13px;padding:3px 8px}.lphone .ti img{height:17px;width:17px}.lphone .ti .st{font-size:11px}
+.lphone #lcol{grid-column:1;grid-row:2;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-bottom:8px}
+.lphone #side{grid-column:2;grid-row:2;min-height:0;display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:6px max(10px,env(safe-area-inset-right)) 8px 4px}
+.lphone #games{order:1;margin-top:0;flex:none}.lphone #card{order:2;flex:none}.lphone #foot{order:3;font-size:10px;padding:10px 4px 2px;color:rgba(255,255,255,.38)}
+.lphone #controls{padding:6px 10px 0;justify-content:flex-start}.lphone .seg button{font-size:12px;padding:4px 8px}
+.lphone #sub{padding:4px 10px 2px;font-size:13px;flex-wrap:nowrap;white-space:nowrap;overflow:hidden}.lphone #sub #detail{display:none}.lphone #title{overflow:hidden;text-overflow:ellipsis}.lphone .mode{font-size:10px;padding:3px 6px}
+.lphone #main{padding-left:8px;padding-right:8px}
+.lphone #bug{height:56px;margin-top:2px}
+.lphone .bt{flex-direction:row!important;text-align:left!important;padding:4px 8px 4px 12px;gap:6px;border-radius:12px}
+.lphone .bt.home{flex-direction:row-reverse!important;text-align:right!important;padding:4px 12px 4px 8px}
+.lphone .bt img{height:30px;width:30px}.lphone .bt .nm{font-size:14px}.lphone .bt .nm .rk{font-size:10px}.lphone .bt .rc{font-size:10px}.lphone .bt .to{display:none}
+.lphone .bt .pts{font-size:28px;margin-left:auto!important;margin-right:0!important}.lphone .bt.home .pts{margin-left:0!important;margin-right:auto!important}
+.lphone .bt .bar{width:5px!important;height:auto!important;top:0;bottom:0}.lphone .bt .pos{width:20px;height:12px;top:3px;right:3px}.lphone .bt.home .pos{right:auto;left:3px}
+.lphone .bc{width:98px;border-radius:12px;padding:3px}.lphone .bc .q{font-size:10px}.lphone .bc .clk{font-size:20px}.lphone .bc .dd{font-size:9px;padding:2px 4px;margin-top:2px}.lphone .bc .fin{font-size:16px}
+.lphone #fieldwrap{margin-top:6px}
+.lphone #lastplay{margin-top:6px;padding:8px 12px;border-radius:14px}.lphone #lpt{font-size:13px;-webkit-line-clamp:2}.lphone #lpk{font-size:10px}
+.lphone #drivebar{font-size:11px;padding:6px 2px}
+.lphone #card,.lphone #games{padding:10px;border-radius:14px;margin-top:6px}
+.lphone .gr{height:46px;padding:0 6px}.lphone .gr .ln{font-size:13px}.lphone .gr .ln img{height:16px;width:16px}.lphone .gr .gs{font-size:11px;width:56px}
+.lphone .ct{font-size:13px}.lphone .ct td:nth-child(2){font-size:10px}.lphone .ldr div{font-size:11px}
+.lphone #pre,.lphone #finish{margin:6px 0;padding:10px 12px}
+.lphone #toast{top:48px}
+.lphone #glist{max-height:50vh;max-height:50dvh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.lphone .wp .wl{font-size:11px}.lphone .ct th img{height:22px;width:22px}
+body.lphone{grid-template-columns:minmax(0,60fr) minmax(0,40fr)}
+@media (max-width:760px){.lphone .bt{padding:3px 6px 3px 9px;gap:4px}.lphone .bt.home{padding:3px 9px 3px 6px}.lphone .bt img{height:22px;width:22px}.lphone .bt .nm{font-size:12px}.lphone .bt .nm .rk{display:none}.lphone .bt .rc{display:none}.lphone .bt .pts{font-size:22px}.lphone .bc{width:84px}.lphone .bc .clk{font-size:17px}.lphone .bc .dd{font-size:8px}
+ .lphone .seg button{font-size:11px;padding:4px 6px}.lphone #controls{gap:4px}}
+.lphone .wp .wl span{white-space:nowrap}.lphone .wp .wl span[style]{font-size:9px!important;letter-spacing:1px!important}.phone .wp .wl span{white-space:nowrap}
